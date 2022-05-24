@@ -5,7 +5,9 @@ public class CardDeck {
     private int deckSize;
     private int[] cardsInDeck;
 
-    public CardDeck(int[] cards) {
+
+
+    public CardDeck() {
         this.deck = new int[NUMBER_OF_CARDS * 2];
         this.cardsInDeck = new int[NUMBER_OF_CARDS];
         for(int i = 0 ; i < NUMBER_OF_CARDS ; i++)
@@ -89,9 +91,13 @@ public class CardDeck {
 
     public void testDiplayDeck()
     {
-        for(int i = 0 ; i < deckSize ; i++)
+        for(int i = 0 ; i < NUMBER_OF_CARDS * 2 ; i++)
         {
             System.out.println("Card on spot: " + i + " has id: " + deck[i]);
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 }
