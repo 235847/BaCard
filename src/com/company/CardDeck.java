@@ -1,103 +1,65 @@
 package com.company;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class CardDeck {
-    private static final int NUMBER_OF_CARDS = 36;
-    private int[] deck;
-    private int deckSize;
-    private int[] cardsInDeck;
-
-
+    private static int COPIES = 2;
+    private ArrayList<Card> deck;
 
     public CardDeck() {
-        this.deck = new int[NUMBER_OF_CARDS * 2];
-        this.cardsInDeck = new int[NUMBER_OF_CARDS];
-        for(int i = 0 ; i < NUMBER_OF_CARDS ; i++)
-        {
-            cardsInDeck[i] = 0;
+        try{
+            deck = new ArrayList<>();
+            String name;
+            int attack;
+            int hp;
+            int mana;
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bakugan","root","");        //connecting with local database
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM bacard");     //passing our query through the statement
+            while (rs.next()){
+                name = rs.getString("name");
+                attack = rs.getInt("hp");
+                hp = rs.getInt("hp");
+                mana = rs.getInt("mana");
+                //adding 2 of the same cards into the deck, changeable with COPIES variable
+                for(int i = 0 ; i < COPIES ; i++)
+                    deck.add(new Card(name,attack,hp,mana));
+            }
+            statement.close();          //closing the conversation with database.
+            connection.close();             //optional
+        }catch (Exception e){
+            System.out.println("Error: loading from database\n");
+            e.printStackTrace();
         }
-        shuffleFullDeck();
     };
 
-    private void shuffleFullDeck()
+    public void changeCopies(int x)
     {
-        for(int i = 0 ; i < NUMBER_OF_CARDS ;i++)
-        {
-            cardsInDeck[i] = 0;
-        }
-        //ta metoda potrzebuje rozwiniecia po przydzieleniu poziomu rzadkosci kartom
-        for(int i = 0; i < NUMBER_OF_CARDS * 2 ; i++)
-        {
-            int id = findFirstIdNotInDeck();
-            if(id == -1)
-            {
-                System.out.println("Error");
-                return;
-            }
-            deck[i] = id;
-            cardsInDeck[id]++;
-        }
-        deckSize = NUMBER_OF_CARDS * 2;
+        COPIES = x;
     }
 
-    private int findFirstIdNotInDeck()
+    private void shuffleDeck()
     {
-        for(int i = 0 ; i < NUMBER_OF_CARDS ; i++)
-        {
-            if(cardsInDeck[i] < 2)  return i;
-        }
-        return -1;
+        Collections.shuffle(deck);
     }
 
-    public String idToString(int id)
+    public Card drawCard()
     {
-       return "missing parameters";
+        return deck.remove(deck.size() - 1);
     }
 
-    public int stringToId(String s)
+    public Card drawCard(int id)
     {
-        return 0;
-    }
-
-    public int drawCard()
-    {
-        int res = deck[0];
-        cardsInDeck[res]--;
-        for(int i = 0 ; i < deckSize - 1 ; i++)
-        {
-            deck[i] = deck[i + 1];
-        }
-        deckSize--;
-        for(int i = deckSize ; i < NUMBER_OF_CARDS * 2 ; i++)
-        {
-            deck[i] = -1;
-        }
-        return res;
-    }
-
-    public int drawCard(int id)
-    {
-        int res = deck[id];
-        cardsInDeck[res]--;
-        for(int i = id ; i < deckSize - 1 ; i++)
-        {
-            deck[i] = deck[i + 1];
-        }
-        deckSize--;
-        for(int i = deckSize ; i < NUMBER_OF_CARDS * 2 ; i++)
-        {
-            deck[i] = -1;
-        }
-        return res;
+        return deck.remove(id);
     }
 
     public void testDiplayDeck()
     {
-        for(int i = 0 ; i < NUMBER_OF_CARDS * 2 ; i++)
-        {
-            System.out.println("Card on spot: " + i + " has id: " + deck[i]);
-        }
-    }
-
-    public static void main(String[] args) {
 
     }
 }
