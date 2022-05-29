@@ -2,6 +2,7 @@ package com.example.bacard;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -17,15 +18,16 @@ public class Arena extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("Arena");
 
-        //FXMLLoader fxmlLoader = new FXMLLoader(Arena.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Arena.class.getResource("hello-view.fxml"));
 
 //        player1 = new Player();
 //        player2 = new Player();
 //        deck = new Deck();
 //        deck.testDiplayDeck();
 
-        //Scene scene = new Scene(fxmlLoader.load(), 960, 540);
-        //stage.setScene(scene);
+        Scene scene = new Scene(fxmlLoader.load(), 960, 540);
+        stage.setFullScreen(true);
+        stage.setScene(scene);
         stage.show();
     }
 
