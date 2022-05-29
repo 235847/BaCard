@@ -30,8 +30,8 @@ public class ArenaController implements Initializable {
 
         deck = new Deck();
         deck.shuffleDeck();
-        player1 = new Player(deck.drawCard(), deck.drawCard(), deck.drawCard());
-        player2 = new Player(deck.drawCard(), deck.drawCard(), deck.drawCard());
+        player1 = new Player(deck.drawCard());
+        player2 = new Player(deck.drawCard());
 
         manaPlayer1.setText(Integer.toString(player1.getCurrent_mana()));
         hpPlayer1.setText(Integer.toString(player1.getHp()));
