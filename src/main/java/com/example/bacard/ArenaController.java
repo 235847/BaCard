@@ -12,7 +12,12 @@ public class ArenaController implements Initializable {
 
     @FXML
     private Label manaPlayer1;
-
+    @FXML
+    private Label hpPlayer1;
+    @FXML
+    private Label hpPlayer2;
+    @FXML
+    private Label manaPlayer2;
 
     private Player player1;
     private Player player2;
@@ -27,12 +32,13 @@ public class ArenaController implements Initializable {
         deck.shuffleDeck();
         player1 = new Player(deck.drawCard(), deck.drawCard(), deck.drawCard());
         player2 = new Player(deck.drawCard(), deck.drawCard(), deck.drawCard());
-        
-        manaPlayer1.setText(Integer.toString(player1.getHp()));
+
+        manaPlayer1.setText(Integer.toString(player1.getCurrent_mana()));
+        hpPlayer1.setText(Integer.toString(player1.getHp()));
+        manaPlayer2.setText(Integer.toString(player1.getCurrent_mana()));
+        hpPlayer2.setText(Integer.toString(player1.getHp()));
 
         int i = 0;
-//        while(player1.getHp() > 0 && player2.getHp() > 0){
-//            i++;
-//        }
+
     }
 }

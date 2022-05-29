@@ -4,11 +4,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bacard.ArenaController">
    <children>
-      <Label fx:id="manaPlayer1" layoutX="1640.0" layoutY="908.0" text="123" textFill="WHITE">
+      <Label fx:id="manaPlayer1" layoutX="1645.0" layoutY="901.0" text="XX" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="hpPlayer1" layoutX="1808.0" layoutY="915.0" text="XX" textFill="WHITE">
+         <font>
+            <Font size="66.0" />
+         </font>
+      </Label>
+      <Label fx:id="manaPlayer2" layoutX="268.0" layoutY="143.0" text="XX" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="hpPlayer2" layoutX="45.0" layoutY="75.0" text="XX" textFill="WHITE">
+         <font>
+            <Font size="66.0" />
          </font>
       </Label>
    </children>

@@ -30,4 +30,8 @@ public class Player {
     public int getHp() {
         return hp;
     }
+
+    public int getCurrent_mana() {
+        return current_mana;
+    }
 }
