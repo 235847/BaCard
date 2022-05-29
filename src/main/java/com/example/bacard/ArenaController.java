@@ -1,14 +1,21 @@
 package com.example.bacard;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class ArenaController {
-    @FXML
-    private Label welcomeText;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+public class ArenaController implements Initializable {
+
+    Player player1;
+    Player player2;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        player1 = new Player();
+        player2 = new Player();
+
     }
 }
