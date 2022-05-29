@@ -24,7 +24,7 @@ public class Arena extends Application {
 //        deck = new Deck();
 //        deck.testDiplayDeck();
 
-        Scene scene = new Scene(fxmlLoader.load(), 1900, 1060);
+        Scene scene = new Scene(fxmlLoader.load(), 960, 540);
         stage.setFullScreen(true);
         stage.setScene(scene);
         stage.show();
