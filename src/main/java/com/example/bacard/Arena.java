@@ -14,7 +14,7 @@ public class Arena extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Arena.class.getResource("hello-view.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         stage.setScene(scene);
         stage.show();
     }
