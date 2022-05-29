@@ -29,11 +29,15 @@
             <Font size="66.0" />
          </font>
       </Label>
-      <ImageView fx:id="baku1" fitHeight="388.0" fitWidth="409.0" layoutX="763.0" layoutY="752.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Card_prev.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="invisibleBut" layoutX="1010.0" layoutY="1021.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="15.0" text="Button" />
+      <AnchorPane fx:id="bakuAndBut" layoutX="782.0" layoutY="575.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="baku1" fitHeight="388.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Card_prev.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="invisibleBut" layoutX="246.0" layoutY="270.0" mnemonicParsing="false" onAction="#attackHero" opacity="0.0" prefHeight="13.0" prefWidth="15.0" text="Button" textFill="TRANSPARENT" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

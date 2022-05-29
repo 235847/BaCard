@@ -29,6 +29,14 @@ public class Player {
         return hp;
     }
 
+    public ArrayList<Card> getPlayer_deck() {
+        return player_deck;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
     public int getCurrent_mana() {
         return current_mana;
     }
