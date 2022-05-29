@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-    private static int COPIES = 2;
+
     private ArrayList<Card> deck;
 
     public Deck() {
@@ -19,12 +19,10 @@ public class Deck {
             ResultSet rs = statement.executeQuery("SELECT * FROM bacard");     //passing our query through the statement
             while (rs.next()){
                 String name = rs.getString("name");
-                int attack = rs.getInt("hp");
+                int attack = rs.getInt("attack");
                 int hp = rs.getInt("hp");
                 int mana = rs.getInt("mana");
-                //adding 2 of the same cards into the deck, changeable with COPIES variable
-                for(int i = 0 ; i < COPIES ; i++)
-                    deck.add(new Card(name,attack,hp,mana));
+                deck.add(new Card(name,attack,hp,mana));
             }
             statement.close();          //closing the conversation with database.
             connection.close();             //optional
@@ -34,11 +32,7 @@ public class Deck {
         }
     };
 
-    public void changeCopies(int x) {
-        COPIES = x;
-    }
-
-    private void shuffleDeck() {
+    public void shuffleDeck() {
         Collections.shuffle(deck);
     }
 
@@ -51,6 +45,10 @@ public class Deck {
     }
 
     public void testDiplayDeck() {
-
+        System.out.println("I want to see my first card:");
+        System.out.println("Name:"+deck.get(0).getName());
+        System.out.println("Attack:"+deck.get(0).getAttack());
+        System.out.println("Hp:"+deck.get(0).getHp());
+        System.out.println("Mana:"+deck.get(0).getMana_cost());
     }
 }
