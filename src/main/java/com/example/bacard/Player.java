@@ -16,15 +16,13 @@ public class Player {
     choice status;
     private ArrayList<Card> player_deck;
 
-    public Player(Card first, Card second, Card third) {
+    public Player(Card first) {
         hp = STARTING_HP;
         starting_mana = 1;
         current_mana = starting_mana;
         status = choice.card_manage;
         player_deck = new ArrayList<>(3);
         player_deck.add(first);
-        player_deck.add(second);
-        player_deck.add(third);
     }
 
     public int getHp() {
