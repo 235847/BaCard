@@ -1,5 +1,7 @@
 package com.example.bacard;
 
+import java.util.ArrayList;
+
 public class Player {
 
     enum choice{
@@ -12,11 +14,20 @@ public class Player {
     private int hp;
     private final static int STARTING_HP = 30;
     choice status;
+    private ArrayList<Card> player_deck;
 
-    public Player() {
+    public Player(Card first, Card second, Card third) {
         hp = STARTING_HP;
         starting_mana = 1;
         current_mana = starting_mana;
         status = choice.card_manage;
+        player_deck = new ArrayList<>(3);
+        player_deck.add(first);
+        player_deck.add(second);
+        player_deck.add(third);
+    }
+
+    public int getHp() {
+        return hp;
     }
 }

@@ -34,10 +34,10 @@ public class Card {
     }
 
     //returns true if bakugan died as a result else returns false
-    public boolean damage(int ammount)
+    public boolean damage(int amount)
     {
-        if(hp - ammount >= OVERHEALTH)  return true;
-        if(hp - ammount <= 0)
+        if(hp - amount >= OVERHEALTH)  return true;
+        if(hp - amount <= 0)
         {
             hp = 0;
             return true;
@@ -46,10 +46,10 @@ public class Card {
     }
 
     //returns true if bakugan healed as a result else returns false
-    public boolean heal(int ammount)
+    public boolean heal(int amount)
     {
-        if(hp + ammount >= OVERHEALTH)  return true;
-        if(hp + ammount <= 0)
+        if(hp + amount >= OVERHEALTH)  return true;
+        if(hp + amount <= 0)
         {
             hp = 0;
             return true;
