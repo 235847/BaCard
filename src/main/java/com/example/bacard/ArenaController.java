@@ -23,9 +23,6 @@ public class ArenaController implements Initializable {
         player2 = new Player(deck.drawCard(), deck.drawCard(), deck.drawCard());
         int i = 0;
         while(player1.getHp() > 0 && player2.getHp() > 0){
-            if(i == 0){
-                
-            }
             i++;
         }
     }
