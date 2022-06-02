@@ -7,10 +7,12 @@ public class Card {
     private final int attack;
     private int hp;
     private final int mana_cost;
+    public int ready;
 
     //constructor
     public Card(String n, int a, int h, int m)
     {
+        ready = 0;
         name =n;
         attack = a;
         hp = h;
