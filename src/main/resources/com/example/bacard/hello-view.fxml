@@ -7,9 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="sth2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bacard.ArenaController">
+<AnchorPane fx:id="MainStage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bacard.ArenaController">
    <children>
       <Label fx:id="manaPlayer1" layoutX="1645.0" layoutY="901.0" text="XX" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="round" layoutX="29.0" layoutY="525.0" text="Round:" textFill="WHITE">
          <font>
             <Font size="29.0" />
          </font>
@@ -17,6 +22,11 @@
       <Label fx:id="hpPlayer1" layoutX="1808.0" layoutY="915.0" text="XX" textFill="WHITE">
          <font>
             <Font size="66.0" />
+         </font>
+      </Label>
+      <Label fx:id="valueRound" layoutX="145.0" layoutY="525.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
          </font>
       </Label>
       <Label fx:id="manaPlayer2" layoutX="268.0" layoutY="143.0" text="XX" textFill="WHITE">
@@ -29,14 +39,14 @@
             <Font size="66.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="bakuAndBut" layoutX="782.0" layoutY="575.0" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="bakuAndBut" layoutX="782.0" layoutY="607.0" prefHeight="0.0" prefWidth="0.0" pickOnBounds="false">
          <children>
-            <ImageView fx:id="baku1" fitHeight="388.0" fitWidth="409.0" layoutX="-4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="baku1" fitHeight="400.0" layoutX="-4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Card_prev.png" />
                </image>
             </ImageView>
-            <Button fx:id="invisibleBut" layoutX="246.0" layoutY="270.0" mnemonicParsing="false" onAction="#attackHero" opacity="0.0" prefHeight="13.0" prefWidth="15.0" text="Button" textFill="TRANSPARENT" />
+            <Button fx:id="invisibleBut" layoutX="233.0" layoutY="263.0" mnemonicParsing="false" onAction="#attackHero" opacity="0.0" prefHeight="47.0" prefWidth="46.0" text="Button" textFill="TRANSPARENT" />
          </children>
       </AnchorPane>
    </children>

@@ -29,6 +29,10 @@ public class ArenaController implements Initializable {
     private ImageView baku1;
     @FXML
     private AnchorPane bakuAndBut;
+    @FXML
+    private Label valueRound;
+    @FXML
+    private Label round;
 
     @FXML
     private Button invisibleBut;
@@ -36,7 +40,7 @@ public class ArenaController implements Initializable {
     private VBox vbox1;
 
     @FXML
-    private AnchorPane sth2;
+    private AnchorPane MainStage;
 
     DraggableMaker draggableMaker = new DraggableMaker();
 
@@ -94,7 +98,7 @@ public class ArenaController implements Initializable {
         sth1.setImage(im);
 
         card1.getChildren().add(sth1);
-        sth2.getChildren().add(card1);
+        MainStage.getChildren().add(card1);
 
         draggableMaker.makeDraggable(card1);
 
