@@ -31,7 +31,7 @@
       </Label>
       <AnchorPane fx:id="bakuAndBut" layoutX="782.0" layoutY="575.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="baku1" fitHeight="388.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="baku1" fitHeight="388.0" fitWidth="409.0" layoutX="-4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Card_prev.png" />
                </image>
