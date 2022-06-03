@@ -9,6 +9,15 @@ public class Card {
     private final int mana_cost;
     public int ready;
 
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    private int playerId;
     //constructor
     public Card(String n, int a, int h, int m)
     {
