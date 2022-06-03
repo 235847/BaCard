@@ -55,8 +55,8 @@ public class ArenaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         deck = new Deck();
         deck.shuffleDeck();
-        player1 = new Player(1,deck.drawCard(),deck.drawCard(),deck.drawCard(),MainStage);
-        player2 = new Player(2,deck.drawCard(),deck.drawCard(),deck.drawCard(),MainStage);
+        player1 = new Player(1,deck.drawCard(),deck.drawCard(),deck.drawCard(),MainStage,hpPlayer1,manaPlayer1);
+        player2 = new Player(2,deck.drawCard(),deck.drawCard(),deck.drawCard(),MainStage,hpPlayer2,manaPlayer2);
 
         manaPlayer1.setText(Integer.toString(player1.getCurrent_mana()));
         hpPlayer1.setText(Integer.toString(player1.getHp()));

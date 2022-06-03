@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Player {
 
     enum choice{
@@ -22,7 +23,7 @@ public class Player {
     }
 
     private int current_mana;
-    private int starting_mana;
+    private final static int starting_mana = 8;
     private int hp;
     private int id;
     private final static int STARTING_HP = 30;
@@ -30,10 +31,13 @@ public class Player {
     private ArrayList<Card> player_deck;
     AnchorPane MainStage;
     private HashMap<String, AnchorPane> deck_Anchor_Pane;
+    Label hpLabel;
+    Label manaLabel;
 
-    public Player(int i,Card first, Card second, Card third, AnchorPane stage) {
+    public Player(int i,Card first, Card second, Card third, AnchorPane stage, Label hpLabel, Label manaLabel) {
+        this.hpLabel = hpLabel;
+        this.manaLabel = manaLabel;
         hp = STARTING_HP;
-        starting_mana = 1;
         id = i;
         MainStage = stage;
         current_mana = starting_mana;
@@ -108,7 +112,7 @@ public class Player {
         sth1.setFitHeight(300.0);
         sth1.setPickOnBounds(true);
         sth1.setPreserveRatio(true);
-        
+
         //ODKOMENTOWAC PO PRZEROBIENIU NAZW W BAZIE DANYCH
         //URL url = getClass().getResource(c.getName() + ".png");
         URL url = getClass().getResource("Apophix_Aquos.png");
@@ -131,6 +135,7 @@ public class Player {
         b.setPrefWidth(200.0);
         card1.getChildren().add(b);
     }
+
     @FXML
     private void readyCards(Card c)
     {
@@ -138,13 +143,21 @@ public class Player {
         {
             if(c.ready == 0)
             {
-                c.ready = 1;
-                deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
-                        deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() - 200);
+                if(current_mana - c.getMana_cost() >= 0)
+                {
+                    c.ready = 1;
+                    reduce_mana(c.getMana_cost());
+                    manaLabel.setText(Integer.toString(getCurrent_mana()));
+                    deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
+                            deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() - 200);
+                }
+
             }
             else if(c.ready == 1)
             {
                 c.ready = 0;
+                current_mana += c.getMana_cost();
+                manaLabel.setText(Integer.toString(getCurrent_mana()));
                 deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
                         deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() + 200);
             }
@@ -153,18 +166,31 @@ public class Player {
         {
             if(c.ready == 0)
             {
-                c.ready = 1;
-                deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
-                        deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() + 200);
+                if(current_mana - c.getMana_cost() >= 0)
+                {
+                    c.ready = 1;
+                    reduce_mana(c.getMana_cost());
+                    manaLabel.setText(Integer.toString(getCurrent_mana()));
+                    deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
+                            deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() + 200);
+                }
+
             }
             else if(c.ready == 1)
             {
                 c.ready = 0;
+                current_mana += c.getMana_cost();
+                manaLabel.setText(Integer.toString(getCurrent_mana()));
                 deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).setLayoutY(
                         deck_Anchor_Pane.get(player_deck.get(player_deck.indexOf(c)).getName()).getLayoutY() - 200);
             }
         }
 
+    }
+
+    public void reduce_mana(int x)
+    {
+        current_mana -= x;
     }
 
 }
