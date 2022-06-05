@@ -64,6 +64,10 @@ public class Player {
 
     }
 
+    public void setCurrent_mana(int current_mana) {
+        this.current_mana = current_mana;
+    }
+
     public int getHp() {
         return this.hp;
     }
@@ -101,8 +105,6 @@ public class Player {
         sth1.setFitHeight(300.0D);
         sth1.setPickOnBounds(true);
         sth1.setPreserveRatio(true);
-
-        System.out.println(c.getName());
         URL url = this.getClass().getResource(c.getName()+".png");
         Image im = new Image(String.valueOf(url));
         sth1.setImage(im);
@@ -124,6 +126,7 @@ public class Player {
         card1.getChildren().add(b);
     }
 
+
     @FXML
     private void readyCards(Card c) {
         if (c.getPlayerId() == 1) {
@@ -134,20 +137,23 @@ public class Player {
                     this.manaLabel.setText(Integer.toString(this.getCurrent_mana()));
                     ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).setLayoutY(((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).getLayoutY() - 200.0D);
                 }
-            } else if (c.ready == 1) {
+            }
+            else if (c.ready == 1) {
                 c.ready = 0;
                 this.current_mana += c.getMana_cost();
                 this.manaLabel.setText(Integer.toString(this.getCurrent_mana()));
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).setLayoutY(((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).getLayoutY() + 200.0D);
             }
-        } else if (c.ready == 0) {
+        }
+        else if (c.ready == 0) {
             if (this.current_mana - c.getMana_cost() >= 0) {
                 c.ready = 1;
                 this.reduce_mana(c.getMana_cost());
                 this.manaLabel.setText(Integer.toString(this.getCurrent_mana()));
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).setLayoutY(((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).getLayoutY() + 200.0D);
             }
-        } else if (c.ready == 1) {
+        }
+        else if (c.ready == 1) {
             c.ready = 0;
             this.current_mana += c.getMana_cost();
             this.manaLabel.setText(Integer.toString(this.getCurrent_mana()));

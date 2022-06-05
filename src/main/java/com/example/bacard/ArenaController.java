@@ -26,7 +26,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ArenaController implements Initializable {
-    int Actround =0;
     @FXML
     private Label manaPlayer1;
     @FXML
@@ -53,6 +52,8 @@ public class ArenaController implements Initializable {
     private Player player1;
     private Player player2;
     private Deck deck;
+    int Actround =0;
+    int maxRoundMana=8;
 
     public ArenaController() {
     }
@@ -63,7 +64,6 @@ public class ArenaController implements Initializable {
         this.deck.shuffleDeck();
         this.player1 = new Player(1, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.hpPlayer1, this.manaPlayer1);
         this.player2 = new Player(2, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.hpPlayer2, this.manaPlayer2);
-
 
         this.manaPlayer1.setText(Integer.toString(this.player1.getCurrent_mana()));
         this.hpPlayer1.setText(Integer.toString(this.player1.getHp()));
@@ -79,24 +79,36 @@ public class ArenaController implements Initializable {
 
     @FXML
     public void start(ActionEvent event) throws Exception{
-
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-//        while(player1.getHp()>0 && player2.getHp()>0){
-//
-//
-//        }
         if(Actround%2==0){
-            player1.addCard(deck.drawCard());
+            if(player1.getPlayer_deck().size()<7){
+                player1.addCard(deck.drawCard());
+                player1.setCardView();
+                player1.setCurrent_mana(maxRoundMana);
+            }
         }
         else{
-            player2.addCard(deck.drawCard());
+            if(player2.getPlayer_deck().size()<7){
+                player2.addCard(deck.drawCard());
+                player2.setCardView();
+                player2.setCurrent_mana(maxRoundMana);
+            }
         }
+        maxRoundMana++;
         Actround++;
         valueRound.setText(Integer.toString(Actround));
+        this.manaPlayer1.setText(Integer.toString(this.player1.getCurrent_mana()));
+        this.hpPlayer1.setText(Integer.toString(this.player1.getHp()));
+        this.manaPlayer2.setText(Integer.toString(this.player2.getCurrent_mana()));
+        this.hpPlayer2.setText(Integer.toString(this.player2.getHp()));
 
-        //display("Game Over","Player 1 HP :" + player1.getHp() + "\nPlayer 2 HP :" + player2.getHp());
-        //window.close();
+
+        if(Actround >=20){
+            display("Game Over","Player 1 HP :" + player1.getHp() + "\nPlayer 2 HP :" + player2.getHp());
+            window.close();
+        }
+
 
     }
 
