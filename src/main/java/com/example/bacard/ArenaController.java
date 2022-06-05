@@ -7,60 +7,55 @@ package com.example.bacard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class ArenaController implements Initializable {
+
+    /*  Player 1 attributes  */
     @FXML
-    private Label manaPlayer1;
+    private Label player1_hp;
     @FXML
-    private Label hpPlayer1;
+    private Label player1_mana;
+
+    /*  Player 2 attributes  */
     @FXML
-    private Label hpPlayer2;
+    private Label player2_hp;
     @FXML
-    private Label manaPlayer2;
+    private Label player2_mana;
+
+    /* Round attributes */
     @FXML
-    private ImageView baku1;
-    @FXML
-    private AnchorPane bakuAndBut;
-    @FXML
-    private Label valueRound;
+    private Label value_round;
     @FXML
     private Label round;
-    @FXML
-    private Button invisibleBut;
-    @FXML
-    private VBox vbox1;
+
     @FXML
     private AnchorPane MainStage;
-    DraggableMaker draggableMaker = new DraggableMaker();
+    @FXML
+    private Button start_button;
+
     private Player player1;
     private Player player2;
-    private Deck deck;
-
-    public ArenaController() {
-    }
+    private final Deck deck = new Deck();
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.deck = new Deck();
         this.deck.shuffleDeck();
-        this.player1 = new Player(1, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.hpPlayer1, this.manaPlayer1);
-        this.player2 = new Player(2, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.hpPlayer2, this.manaPlayer2);
-        this.manaPlayer1.setText(Integer.toString(this.player1.getCurrent_mana()));
-        this.hpPlayer1.setText(Integer.toString(this.player1.getHp()));
-        this.manaPlayer2.setText(Integer.toString(this.player2.getCurrent_mana()));
-        this.hpPlayer2.setText(Integer.toString(this.player2.getHp()));
     }
 
-    @FXML
-    private void attackHero() {
-        this.player2.setHp(this.player2.getHp() - 6);
-        this.hpPlayer2.setText(Integer.toString(this.player2.getHp()));
+
+    public void start(ActionEvent event) {
+        this.player1 = new Player(1, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.player1_hp, this.player1_mana);
+        this.player2 = new Player(2, this.deck.drawCard(), this.deck.drawCard(), this.deck.drawCard(), this.MainStage, this.player2_hp, this.player2_mana);
+        this.player1_mana.setText(Integer.toString(this.player1.getCurrent_mana()));
+        this.player1_hp.setText(Integer.toString(this.player1.getHp()));
+        this.player2_mana.setText(Integer.toString(this.player2.getCurrent_mana()));
+        this.player2_hp.setText(Integer.toString(this.player2.getHp()));
     }
 }
