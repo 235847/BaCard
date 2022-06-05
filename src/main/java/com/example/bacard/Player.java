@@ -101,6 +101,8 @@ public class Player {
         sth1.setFitHeight(300.0D);
         sth1.setPickOnBounds(true);
         sth1.setPreserveRatio(true);
+
+        System.out.println(c.getName());
         URL url = this.getClass().getResource(c.getName()+".png");
         Image im = new Image(String.valueOf(url));
         sth1.setImage(im);

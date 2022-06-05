@@ -89,6 +89,11 @@ public class ArenaController implements Initializable {
         if(Actround%2==0){
             player1.addCard(deck.drawCard());
         }
+        else{
+            player2.addCard(deck.drawCard());
+        }
+        Actround++;
+        valueRound.setText(Integer.toString(Actround));
 
         //display("Game Over","Player 1 HP :" + player1.getHp() + "\nPlayer 2 HP :" + player2.getHp());
         //window.close();
