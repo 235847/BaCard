@@ -49,14 +49,14 @@ public class Player {
     public void setCardView() {
         int i;
         if (this.id == 1) {
-            for(i = 0; i < this.player_deck.size(); ++i) {
+            for(i = 0; i < this.player_deck.size(); i++) {
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(i)).getName())).setLayoutX((double)(100 + i * 200));
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(i)).getName())).setLayoutY(780.0D);
             }
         }
 
         if (this.id == 2) {
-            for(i = 0; i < this.player_deck.size(); ++i) {
+            for(i = 0; i < this.player_deck.size(); i++) {
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(i)).getName())).setLayoutX((double)(1920 - (350 + i * 200)));
                 ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(i)).getName())).setLayoutY(0.0D);
             }
@@ -151,7 +151,6 @@ public class Player {
             this.manaLabel.setText(Integer.toString(this.getCurrent_mana()));
             ((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).setLayoutY(((AnchorPane)this.deck_Anchor_Pane.get(((Card)this.player_deck.get(this.player_deck.indexOf(c))).getName())).getLayoutY() - 200.0D);
         }
-
     }
 
     public void reduce_mana(int x) {
