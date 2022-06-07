@@ -5,6 +5,9 @@
 
 package com.example.bacard;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+
 public class Card {
     private static final int OVERHEALTH = 5000;
     private final String name;
@@ -13,6 +16,9 @@ public class Card {
     private final int mana_cost;
     public int ready = 0;
     private int playerId;
+    public boolean is_dead = false;
+    public Label hp_label;
+    public AnchorPane pane;
 
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
@@ -45,25 +51,21 @@ public class Card {
         return this.mana_cost;
     }
 
-    public boolean damage(int amount) {
-        if (this.hp - amount >= 5000) {
-            return true;
-        } else if (this.hp - amount <= 0) {
-            this.hp = 0;
-            return true;
-        } else {
-            return false;
-        }
+    public void attack(Card enemy)
+    {
+        System.out.println(this.getName() + "Attacked " + enemy.getName());
+        reduce_hp(enemy.getAttack());
+        enemy.reduce_hp(attack);
     }
 
-    public boolean heal(int amount) {
-        if (this.hp + amount >= 5000) {
-            return true;
-        } else if (this.hp + amount <= 0) {
-            this.hp = 0;
-            return true;
-        } else {
-            return false;
+    public void reduce_hp(int amount)
+    {
+        hp -= amount;
+        if(hp <= 0)
+        {
+            is_dead = true;
         }
+        hp_label.setText(Integer.toString(hp));
     }
+
 }
