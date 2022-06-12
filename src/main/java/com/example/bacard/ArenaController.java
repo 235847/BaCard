@@ -22,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -54,6 +56,7 @@ public class ArenaController implements Initializable {
     private Deck deck;
     int Actround =0;
     int maxRoundMana=8;
+    private Label turn;
 
     public ArenaController() {
     }
@@ -69,6 +72,16 @@ public class ArenaController implements Initializable {
         this.hpPlayer1.setText(Integer.toString(this.player1.getHp()));
         this.manaPlayer2.setText(Integer.toString(this.player2.getCurrent_mana()));
         this.hpPlayer2.setText(Integer.toString(this.player2.getHp()));
+
+        turn = new Label();
+        turn.setText("v");
+        turn.setTextFill(Paint.valueOf("WHITE"));
+        turn.setId("turn_label");
+        turn.setLayoutX(1820);
+        turn.setLayoutY(520);
+        turn.setFont(new Font("Arial", 40.0D));
+
+        MainStage.getChildren().add(turn);
     }
 
     @FXML
@@ -85,6 +98,7 @@ public class ArenaController implements Initializable {
             player1.can_move = false;
             player2.can_move = true;
             Actround++;
+            turn.setText("^");
         }
         else {
             int ammount1 = get_ready_num(player1);
@@ -101,6 +115,7 @@ public class ArenaController implements Initializable {
             player2.can_move = false;
             maxRoundMana++;
             Actround++;
+            turn.setText("v");
             round_end_addcards();
             valueRound.setText(Integer.toString(Actround/2));
             this.manaPlayer1.setText(Integer.toString(this.player1.getCurrent_mana()));
