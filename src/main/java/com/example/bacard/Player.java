@@ -27,8 +27,8 @@ public class Player {
     private ArrayList<Card> player_deck;
     AnchorPane MainStage;
     private HashMap<String, AnchorPane> deck_Anchor_Pane;
-    Label hpLabel;
-    Label manaLabel;
+    public Label hpLabel;
+    public Label manaLabel;
     public boolean can_move;
 
     public Player(int i, Card first, Card second, Card third, AnchorPane stage, Label hpLabel, Label manaLabel) {
