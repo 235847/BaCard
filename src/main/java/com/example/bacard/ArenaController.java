@@ -151,6 +151,8 @@ public class ArenaController implements Initializable {
 
     public void fight(Player more, Player less, int more_num, int less_num)
     {
+        System.out.println("num player 1: " + more_num);
+        System.out.println("num player 2: " + less_num);
         Card card1,card2;
         int i;
         for(i = 0 ; i < less_num ; i++)

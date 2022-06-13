@@ -149,11 +149,7 @@ public class Player {
 
     public Card get_next_ready(int last)
     {
-        if(last == 0)
-        {
-            last = -1;
-        }
-        for(int i = last + 1 ; i < player_deck.size() ; i++)
+        for(int i = last; i < player_deck.size() ; i++)
         {
             if(player_deck.get(i).ready == 1)
             {
